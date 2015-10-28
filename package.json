@@ -1,0 +1,48 @@
+{
+  "name": "penneo-js-sdk",
+  "title": "Penneo - Javascript SDK",
+  "version": "0.0.9",
+  "description": "Penneo Javascript SDK",
+  "author": "Jesús Otero <jo@penneo.com> - http://penneo.com",
+  "main": "bin/main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.2",
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "eslint": "^0.24.1",
+    "gulp": "^3.8.7",
+    "gulp-connect": "^2.2.0",
+    "gulp-open": "^1.0.0",
+    "gulp-util": "^3.0.6",
+    "require-dir": "^0.3.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jesusoterogomez/penneo-js-sdk.git"
+  },
+  "scripts": {
+    "compile": "babel -d bin/ src/",
+    "prepublish": "npm run compile"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6"
+    ]
+  },
+  "dependencies": {
+    "object-assign": "^4.0.1",
+    "request": "^2.65.0",
+    "wsse": "^2.1.0"
+  }
+}
