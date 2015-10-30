@@ -1,16 +1,18 @@
-// Entry point for browserify
-
 import config from './config';
-import casefile from './entity/casefile';
-import document from './entity/document';
+import connector from './connector';
 
 function init(key, secret, url) {
     config.update({key: key, secret: secret, url: url});
 }
 
+
+
+/* Exports */
 export default {
     init: init,
     config: config,
-    casefile: casefile,
-    document: document
+    get: connector.get,
+    post: connector.post,
+    put: connector.put,
+    delete: connector.delete_
 };

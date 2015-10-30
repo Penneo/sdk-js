@@ -35,7 +35,7 @@ penneo.authenticate(function(response){
 });
 ```
 
-If you want to use the new ES6 syntax, you need a tool like Babel, that transpiles your code to ES5 and builds a distribution version. the same example outlined above, in conjunction with `Browserify` would result in
+If you want to use the new ES6 syntax, you need a tool like Babel, that transpiles your code to ES5 and builds a distribution version. The same example outlined above, in conjunction with `Browserify` would result in
 
 ```js
 import penneo from 'penneo-js-sdk' // import directly from node_module
