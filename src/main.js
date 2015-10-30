@@ -5,8 +5,6 @@ function init(key, secret, url) {
     config.update({key: key, secret: secret, url: url});
 }
 
-
-
 /* Exports */
 export default {
     init: init,
