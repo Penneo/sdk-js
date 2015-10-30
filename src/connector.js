@@ -50,7 +50,7 @@ function createRequest(method, resource) {
     if (!isConfigured()) {
         // @todo: Add link to the documentation if it doesn't change
         //        http://docs.penneo.com/javascript-sdk#init
-        throw 'Please configure the Penneo SDK before calling any methods.';
+        throw new Error('Please configure the Penneo SDK before calling any methods.');
     }
 
     let requestOptions = {
@@ -60,7 +60,7 @@ function createRequest(method, resource) {
         headers: {
             'X-WSSE': generateAuthHeader(config.key, config.secret),
             'Accept-charset': 'utf-8',
-            'Accept': 'application/json'
+            Accept: 'application/json'
         }
     };
 
@@ -73,7 +73,7 @@ function createRequest(method, resource) {
             }
         });
     });
-};
+}
 
 /**
  * @param resource {string} Resource endpoint e.g. /casefiles, /casefiles/1
@@ -83,7 +83,7 @@ function createRequest(method, resource) {
  */
 function _get(resource, filter) {
     if (filter) {
-        throw 'Functionality for adding filters has not been implemented';
+        throw new Error('Functionality for adding filters has not been implemented');
     }
     return createRequest('GET', resource);
 }
