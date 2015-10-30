@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "4.1"
+  - '4.1'
 
 install:
   - npm install
@@ -11,3 +11,7 @@ before_script:
 
 script:
   - npm run compile
+
+notifications:
+  slack:
+    secure: XbJrZKoeekDkTk0l6/ZxX+esKgTOAINveNgnmhnDPHrRQX2hDNehBS3L41P3Z4sbQhc789pMnOuxy3akmQ1XT1lOPw6+7ZXZBzp+GVF1843LxxZCkR/w4sVjmg6j4Qg+Cs0hXnM/xBxzXRgtkhd9zl7zd8q6hZnimpJMeyiKhDI2H7NHbUrw8IMe0pOozxXoGDn0RQVZuzRPiFAXN9mnfSU20pBV8tcSK/JwamZwQBrpx3kydVPDiRB1VhH2dwaxXetBfXhLJP6brEiJTDnnXNf5W9NFT9tyK1AzD4bPqyyTdan28u71pCLYrROJGug13u1TdXDk14qrjAbom/KDAyw9EbyApz3bx2SuxiVozjLG074d2JS/CQDguwqB11o+3gJaiw+tYzj6S1sF1xuTVEKgqPRNsTb2coAEZO9D+uwBwD2RHq1/Cf74GEAoHp6YUAkUIWm07TU527iiD/6HUzBUvEzzlwD5Ug1OR6K7tH6S883XTvGyxyd31zzJpQxen25JsrKrU1PteGrTJi40jJfyhtorYEikMkWL+deSCfDxNn2drXA2xo9lzIkidIrSIdiOTImGHUMgVi120JAVV0ob4cP5VX+vhGtqgbWdqP5MoQ5MwQRiLnvsp40ylnCTjtAfYR5/52rfJKH3t10j2t9ALX7Vlp5pGwR2T13q6n4=
