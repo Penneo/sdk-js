@@ -51,7 +51,6 @@ function createRequest(method, resource) {
         // @todo: Add link to the documentation if it doesn't change
         //        http://docs.penneo.com/javascript-sdk#init
         throw 'Please configure the Penneo SDK before calling any methods.';
-        return false;
     }
 
     let requestOptions = {
@@ -66,11 +65,11 @@ function createRequest(method, resource) {
     };
 
     return new Promise(function(resolve, reject) {
-        request(requestOptions, function(error, data) {
+        request(requestOptions, function(error, response) {
             if (error) {
                 reject(error);
             } else {
-                resolve(data);
+                resolve(response);
             }
         });
     });
@@ -82,7 +81,7 @@ function createRequest(method, resource) {
  *
  * @return {Promise}
  */
-function get(resource, filter) {
+function _get(resource, filter) {
     if (filter) {
         throw 'Functionality for adding filters has not been implemented';
     }
@@ -95,7 +94,7 @@ function get(resource, filter) {
  *
  * @return {Promise}
  */
-function post(resource, data) {
+function _post(resource, data) {
     return createRequest('POST', resource, data);
 }
 
@@ -105,7 +104,7 @@ function post(resource, data) {
  *
  * @return {Promise}
  */
-function put(resource, data) {
+function _put(resource, data) {
     return createRequest('PUT', resource, data);
 }
 
@@ -114,14 +113,14 @@ function put(resource, data) {
  *
  * @return {Promise}
  */
-function delete_(resource) {
+function _delete(resource) {
     return createRequest('DELETE', resource);
 }
 
 /* Exports */
 export default {
-    get: get,
-    post: post,
-    put: put,
-    delete: delete_
+    get: _get,
+    post: _post,
+    put: _put,
+    delete: _delete
 };
