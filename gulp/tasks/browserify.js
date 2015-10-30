@@ -10,26 +10,26 @@ var bundler = watchify(browserify(config.src, watchify.args));
 bundler.require(config.src, {expose: config.expose});
 
 function logError(e) {
-  console.log(e.toString()); // Print error to console
+    console.log(e.toString()); // Print error to console
 
-  if (e.loc) {
-    console.log('Line: ' + e.loc.line + ' - Column: ' + e.loc.column);
-  }
+    if (e.loc) {
+        console.log('Line: ' + e.loc.line + ' - Column: ' + e.loc.column);
+    }
 
-  this.emit('end');
+    this.emit('end');
 }
 
 watchify.args.debug = config.debug;
 config.settings.transform.forEach(function(t) {
-	bundler.transform(t);
+    bundler.transform(t);
 });
 
 function bundle() {
-	return bundler.bundle()
-  .on('error', logError)
-  .pipe(source(config.outputName))
-  .pipe(gulp.dest(config.dest))
-  .pipe(connect.reload());
+    return bundler.bundle()
+    .on('error', logError)
+    .pipe(source(config.outputName))
+    .pipe(gulp.dest(config.dest))
+    .pipe(connect.reload());
 }
 
 gulp.task('browserify', bundle);

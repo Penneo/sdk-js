@@ -3,5 +3,5 @@ var connect = require('gulp-connect');
 var config = require('../config').server;
 
 gulp.task('server', function() {
-  connect.server(config.settings);
+    connect.server(config.settings);
 });

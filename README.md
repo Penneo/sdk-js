@@ -44,3 +44,24 @@ penneo.authenticate(function(response){
 	console.log('authenticated');
 });
 ```
+
+## Build from source
+
+```sh
+$ npm run compile
+```
+
+To build a Browser bundled distribution (with Browserify), run
+
+```sh
+$ gulp browserify
+```
+
+
+## Live transpilation
+
+To keep the bin directory up to date with the latest source code in the SDK. (useful for development and debugging), run
+
+```sh
+$ gulp live-transpile
+```
