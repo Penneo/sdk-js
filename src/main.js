@@ -12,5 +12,5 @@ export default {
     get: connector.get,
     post: connector.post,
     put: connector.put,
-    delete: connector.delete_
+    delete: connector.delete
 };
