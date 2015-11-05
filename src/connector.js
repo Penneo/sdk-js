@@ -64,23 +64,18 @@ function parseResponse(data) {
     return response;
 }
 
-
 /**
+ * Builds the appropriate options for the HTTP Requests based on Method and Arguments
+ *
  * @private
- * @throws SDK not configured
  *
  * @param method   {string} This can be one of GET|DELETE|POST|PUT
  * @param resource {string} The resource name
+ * @param data     {object} POST data or GET Parameters
  *
- * @return {Promise}
+ * @return {object} An object with the options for the HTTP Request.
  */
-function createRequest(method, resource) {
-    if (!isConfigured()) {
-        // @todo: Add link to the documentation if it doesn't change
-        //        http://docs.penneo.com/javascript-sdk#init
-        throw new Error('Please configure the Penneo SDK before calling any methods.');
-    }
-
+function buildRequestOptions(method, resource, data) {
     let requestOptions = {
         method: method,
         uri: config.url + resource,
@@ -92,29 +87,65 @@ function createRequest(method, resource) {
         }
     };
 
+    if (!data) {
+        return requestOptions;
+    }
+
+    switch (method) {
+        case 'GET': // Build a QueryString on GET requests with URL Parameters.
+            requestOptions.qs = data;
+            break;
+
+        case 'POST': // Accept JSON and body on POST with Data.
+            requestOptions.body = data;
+            requestOptions.json = true;
+            break;
+
+        default:
+            throw new Error('Method not supported.');
+    }
+
+    return requestOptions;
+}
+
+/**
+ * @private
+ * @throws SDK not configured
+ *
+ * @param method   {string} This can be one of GET|DELETE|POST|PUT
+ * @param resource {string} The resource name
+ * @param data     {object} POST data or GET Parameters
+ *
+ * @return {Promise}
+ */
+function createRequest(method, resource, data) {
+    if (!isConfigured()) {
+        // @todo: Add link to the documentation if it doesn't change
+        //        http://docs.penneo.com/javascript-sdk#init
+        throw new Error('Please configure the Penneo SDK before calling any methods.');
+    }
+
+    let options = buildRequestOptions(method, resource, data);
+
     return new Promise(function(resolve, reject) {
-        request(requestOptions, function(error, response) {
+        request(options, function(error, response) {
             if (error) {
                 reject(error);
             } else {
                 resolve(response);
             }
         });
-    }).then(parseResponse); // Parse Response
+    }).then(parseResponse);
 }
 
 /**
  * @param resource {string} Resource endpoint e.g. /casefiles, /casefiles/1
- * @param filter   {object} @todo: to implement
+ * @param params   {object} Object containing keys and values for URL Parameters.
  *
  * @return {Promise}
  */
-function _get(resource, filter) {
-    if (filter) {
-        throw new Error('Functionality for adding filters has not been implemented');
-    }
-
-    return createRequest('GET', resource);
+function _get(resource, params) {
+    return createRequest('GET', resource, params);
 }
 
 /**
