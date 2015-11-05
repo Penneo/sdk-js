@@ -1,3 +1,10 @@
+// 
+// ESLint Rules
+// Based on Airbnb's Style Guide - https://github.com/airbnb/javascript
+//
+// requires 'eslint' and 'eslint-plugin-react' npm packages
+//
+
 {
   "env": {
     "browser": true,
@@ -47,10 +54,9 @@
     "no-dupe-keys": 2, // disallow duplicate keys when creating object literals
     "no-duplicate-case": 2, // disallow a duplicate case label.
     "no-empty": 2, // disallow empty statements
-    "no-empty-class": 2, // disallow the use of empty character classes in regular expressions
+    "no-empty-character-class": 2, // disallow the use of empty character classes in regular expressions
     "no-ex-assign": 2, // disallow assigning to the exception in a catch block
     "no-extra-boolean-cast": 2, // disallow double-negation boolean casts in a boolean context
-    "no-extra-parens": 0, // disallow unnecessary parentheses (off by default)
     "no-extra-semi": 2, // disallow unnecessary semicolons
     "no-func-assign": 2, // disallow overwriting functions written as function declarations
     "no-inner-declarations": 2, // disallow function or variable declarations in nested blocks
@@ -59,7 +65,6 @@
     "no-negated-in-lhs": 2, // disallow negation of the left operand of an in expression
     "no-obj-calls": 2, // disallow the use of object properties of the global object (Math and JSON) as functions
     "no-regex-spaces": 2, // disallow multiple spaces in a regular expression literal
-    "no-reserved-keys": 0, // disallow reserved words being used as object literal keys (off by default). @see: http://eslint.org/docs/rules/no-reserved-keys.html#when-not-to-use-it
     "no-sparse-arrays": 2, // disallow sparse arrays
     "no-unreachable": 2, // disallow unreachable statements after a return, throw, continue, or break statement
     "use-isnan": 2, // disallow comparisons with the value NaN
@@ -150,7 +155,7 @@
     //
     // These rules are purely matters of style and are quite subjective.
     //
-    "indent": 2, // this option sets a specific tab width for your code (off by default)
+    "indent": [2, 4, {"SwitchCase": 1}], // this option sets a specific tab width for your code (4 spaces by default, including switch statements)
     "brace-style": 1, // enforce one true brace style (off by default)
     "camelcase": 1, // require camel case names
     "comma-spacing": [1, {"before": false, "after": true}], // enforce spacing before and after comma
@@ -175,11 +180,11 @@
     "no-ternary": 0, // disallow the use of ternary operators (off by default)
     "no-trailing-spaces": 1, // disallow trailing whitespace at the end of lines
     "no-underscore-dangle": 0, // disallow dangling underscores in identifiers
-    "no-wrap-func": 1, // disallow wrapping of non-IIFE statements in parens
+    "no-extra-parens": [1, "functions"], // disallow wrapping of non-IIFE statements in parens
     "one-var": [1, "never"], // allow just one var statement per function (off by default)
     "operator-assignment": [1, "always"], // require assignment operator shorthand where possible or prohibit it entirely (off by default)
     "padded-blocks": [1, "never"], // enforce padding within blocks (off by default)
-    "quote-props": [1, "as-needed"], // require quotes around object literal property names (off by default)
+    "quote-props": [1, "as-needed", {"keywords": false}], // require quotes around object literal property names (off by default)
     "quotes": [0, "double"], // specify whether double or single quotes should be used
     "semi": [2, "always"], // require or disallow use of semicolons instead of ASI
     "semi-spacing": [1, {"before": false, "after": true}], // enforce spacing before and after semicolons
@@ -187,10 +192,12 @@
     "space-after-keywords": [1, "always"], // require a space after certain keywords (off by default)
     "space-before-blocks": [1, "always"], // require or disallow space before blocks (off by default)
     "space-before-function-paren": [1, {"anonymous": "never", "named": "never"}], // require or disallow space before function opening parenthesis (off by default)
-    "space-in-brackets": [1, "never"], // require or disallow spaces inside brackets (off by default)
+    "object-curly-spacing" : [1, "never"], // require or disallow spaces inside objects
+    "array-bracket-spacing" : [1, "never"], // require or disallow spaces inside brackets
+    "computed-property-spacing" : [1, "never"], // require or disallow spaces inside brackets
     "space-in-parens": [1, "never"], // require or disallow spaces inside parentheses (off by default)
     "space-unary-ops": [1, {"words": true, "nonwords": false}], // Require or disallow spaces before/after unary operators (words on by default, nonwords off by default)
-    "spaced-line-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
+    "spaced-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
     "wrap-regex": 0, // require regex literals to be wrapped in parentheses (off by default)
 
     //
@@ -198,7 +205,7 @@
     //
     // These rules are only relevant to ES6 environments and are off by default.
     //
-    "no-var": 0, // require let or const instead of var (off by default)
+    "no-var": 1, // require let or const instead of var (off by default)
     "generator-star-spacing": [2, "before"], // enforce the spacing around the * in generator functions (off by default)
 
     //
@@ -209,11 +216,10 @@
     // the functionality is the same.
     //
     "max-depth": [2, 3], // specify the maximum depth that blocks can be nested (off by default)
-    "max-len": [2, 100, 2], // specify the maximum length of a line in your program (off by default)
+    "max-len": [2, 100, 4], // , {ignoreUrls: true} max length of 100 characters with each tab counting as 4 characters. ignoring urls.
     "max-params": [2, 5], // limits the number of parameters that can be used in the function declaration. (off by default)
     "max-statements": 0, // specify the maximum number of statement allowed in a function (off by default)
     "no-bitwise": 0, // disallow use of bitwise operators (off by default)
     "no-plusplus": 0, // disallow use of unary operators, ++ and -- (off by default)
-
   }
 }

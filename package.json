@@ -27,7 +27,7 @@
     "url": "git://github.com/jesusoterogomez/penneo-js-sdk.git"
   },
   "scripts": {
-    "lint": "eslint src/",
+    "lint": "eslint src/ gulp/",
     "compile": "babel -d bin/ src/",
     "prepublish": "npm run compile"
   },
