@@ -1,10 +1,27 @@
+# Sublime
+.sublime*
+
+# Floobits
+.floo
+.flooignore
+.dir-locals.el
+.projectile
+
+# NPM
+npm-debug.log
+node_modules
+
+# OSX
+*.DS_Store
+
+# Bower
+bower_components
+
+# Builds
 bin
 dist
-node_modules
-bower_components
-.sublime*
 sassdoc
-*.DS_Store
-npm-debug.log
+
+# Logs
 *.log
 *~
