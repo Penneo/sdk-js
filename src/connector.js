@@ -37,6 +37,34 @@ function isConfigured() {
     return true;
 }
 
+
+/**
+ * Parse the response from the server. All responses from the server should be
+ * parsed by this function to keep the convention
+ *
+ * @private
+ *
+ * @param response {object} Successful response from HTTP Request.
+ *
+ * @return {object} An object with the keys: response, raw
+ */
+function parseResponse(data) {
+    console.log(data);
+    let response = {
+        body: {},
+        raw: data,
+        status: data.status
+    };
+
+    if (!data.body) {
+        return response;
+    }
+
+    response.body = JSON.parse(data.body);
+    return response;
+}
+
+
 /**
  * @private
  * @throws SDK not configured
@@ -72,7 +100,7 @@ function createRequest(method, resource) {
                 resolve(response);
             }
         });
-    });
+    }).then(parseResponse); // Parse Response
 }
 
 /**
@@ -85,6 +113,7 @@ function _get(resource, filter) {
     if (filter) {
         throw new Error('Functionality for adding filters has not been implemented');
     }
+
     return createRequest('GET', resource);
 }
 
