@@ -1,8 +1,8 @@
 // 
-// ESLint Rules
+// ESLint Rules for ES6
 // Based on Airbnb's Style Guide - https://github.com/airbnb/javascript
-//
-// requires 'eslint' and 'eslint-plugin-react' npm packages
+// 
+// requires 'eslint' npm package
 //
 
 {
@@ -57,6 +57,7 @@
     "no-empty-character-class": 2, // disallow the use of empty character classes in regular expressions
     "no-ex-assign": 2, // disallow assigning to the exception in a catch block
     "no-extra-boolean-cast": 2, // disallow double-negation boolean casts in a boolean context
+    "no-extra-parens": 0, // disallow unnecessary parentheses (off by default)
     "no-extra-semi": 2, // disallow unnecessary semicolons
     "no-func-assign": 2, // disallow overwriting functions written as function declarations
     "no-inner-declarations": 2, // disallow function or variable declarations in nested blocks
@@ -65,6 +66,7 @@
     "no-negated-in-lhs": 2, // disallow negation of the left operand of an in expression
     "no-obj-calls": 2, // disallow the use of object properties of the global object (Math and JSON) as functions
     "no-regex-spaces": 2, // disallow multiple spaces in a regular expression literal
+    "no-reserved-keys": 0, // disallow reserved words being used as object literal keys (off by default). @see: http://eslint.org/docs/rules/no-reserved-keys.html#when-not-to-use-it
     "no-sparse-arrays": 2, // disallow sparse arrays
     "no-unreachable": 2, // disallow unreachable statements after a return, throw, continue, or break statement
     "use-isnan": 2, // disallow comparisons with the value NaN
@@ -184,7 +186,7 @@
     "one-var": [1, "never"], // allow just one var statement per function (off by default)
     "operator-assignment": [1, "always"], // require assignment operator shorthand where possible or prohibit it entirely (off by default)
     "padded-blocks": [1, "never"], // enforce padding within blocks (off by default)
-    "quote-props": [1, "as-needed", {"keywords": false}], // require quotes around object literal property names (off by default)
+    "quote-props": [1, "as-needed", {"keywords": false}], // require quotes around object literal property names
     "quotes": [0, "double"], // specify whether double or single quotes should be used
     "semi": [2, "always"], // require or disallow use of semicolons instead of ASI
     "semi-spacing": [1, {"before": false, "after": true}], // enforce spacing before and after semicolons
@@ -205,7 +207,7 @@
     //
     // These rules are only relevant to ES6 environments and are off by default.
     //
-    "no-var": 1, // require let or const instead of var (off by default)
+    "no-var": 0, // require let or const instead of var (off by default)
     "generator-star-spacing": [2, "before"], // enforce the spacing around the * in generator functions (off by default)
 
     //
@@ -216,10 +218,11 @@
     // the functionality is the same.
     //
     "max-depth": [2, 3], // specify the maximum depth that blocks can be nested (off by default)
-    "max-len": [2, 100, 4], // , {ignoreUrls: true} max length of 100 characters with each tab counting as 4 characters. ignoring urls.
+    "max-len": [2, 100, 2], // specify the maximum length of a line in your program (off by default)
     "max-params": [2, 5], // limits the number of parameters that can be used in the function declaration. (off by default)
     "max-statements": 0, // specify the maximum number of statement allowed in a function (off by default)
     "no-bitwise": 0, // disallow use of bitwise operators (off by default)
     "no-plusplus": 0, // disallow use of unary operators, ++ and -- (off by default)
+
   }
 }
