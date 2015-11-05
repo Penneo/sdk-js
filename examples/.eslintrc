@@ -1,0 +1,17 @@
+// 
+// ESLint Rule Overrides for ES5 Environments
+// 
+// requires 'eslint' npm package
+//
+
+{
+  "env": {
+    "browser": false,
+    "node": true,
+    "es6": false
+  },
+
+  "rules": {
+    "no-var": 0, // require let or const instead of var (off by default)
+  }
+}

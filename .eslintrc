@@ -1,3 +1,10 @@
+// 
+// ESLint Rules for ES6
+// Based on Airbnb's Style Guide - https://github.com/airbnb/javascript
+// 
+// requires 'eslint' npm package
+//
+
 {
   "env": {
     "browser": true,
@@ -47,7 +54,7 @@
     "no-dupe-keys": 2, // disallow duplicate keys when creating object literals
     "no-duplicate-case": 2, // disallow a duplicate case label.
     "no-empty": 2, // disallow empty statements
-    "no-empty-class": 2, // disallow the use of empty character classes in regular expressions
+    "no-empty-character-class": 2, // disallow the use of empty character classes in regular expressions
     "no-ex-assign": 2, // disallow assigning to the exception in a catch block
     "no-extra-boolean-cast": 2, // disallow double-negation boolean casts in a boolean context
     "no-extra-parens": 0, // disallow unnecessary parentheses (off by default)
@@ -150,7 +157,7 @@
     //
     // These rules are purely matters of style and are quite subjective.
     //
-    "indent": 2, // this option sets a specific tab width for your code (off by default)
+    "indent": [2, 4, {"SwitchCase": 1}], // this option sets a specific tab width for your code (4 spaces by default, including switch statements)
     "brace-style": 1, // enforce one true brace style (off by default)
     "camelcase": 1, // require camel case names
     "comma-spacing": [1, {"before": false, "after": true}], // enforce spacing before and after comma
@@ -175,11 +182,11 @@
     "no-ternary": 0, // disallow the use of ternary operators (off by default)
     "no-trailing-spaces": 1, // disallow trailing whitespace at the end of lines
     "no-underscore-dangle": 0, // disallow dangling underscores in identifiers
-    "no-wrap-func": 1, // disallow wrapping of non-IIFE statements in parens
+    "no-extra-parens": [1, "functions"], // disallow wrapping of non-IIFE statements in parens
     "one-var": [1, "never"], // allow just one var statement per function (off by default)
     "operator-assignment": [1, "always"], // require assignment operator shorthand where possible or prohibit it entirely (off by default)
     "padded-blocks": [1, "never"], // enforce padding within blocks (off by default)
-    "quote-props": [1, "as-needed"], // require quotes around object literal property names (off by default)
+    "quote-props": [1, "as-needed", {"keywords": false}], // require quotes around object literal property names
     "quotes": [0, "double"], // specify whether double or single quotes should be used
     "semi": [2, "always"], // require or disallow use of semicolons instead of ASI
     "semi-spacing": [1, {"before": false, "after": true}], // enforce spacing before and after semicolons
@@ -187,10 +194,12 @@
     "space-after-keywords": [1, "always"], // require a space after certain keywords (off by default)
     "space-before-blocks": [1, "always"], // require or disallow space before blocks (off by default)
     "space-before-function-paren": [1, {"anonymous": "never", "named": "never"}], // require or disallow space before function opening parenthesis (off by default)
-    "space-in-brackets": [1, "never"], // require or disallow spaces inside brackets (off by default)
+    "object-curly-spacing" : [1, "never"], // require or disallow spaces inside objects
+    "array-bracket-spacing" : [1, "never"], // require or disallow spaces inside brackets
+    "computed-property-spacing" : [1, "never"], // require or disallow spaces inside brackets
     "space-in-parens": [1, "never"], // require or disallow spaces inside parentheses (off by default)
     "space-unary-ops": [1, {"words": true, "nonwords": false}], // Require or disallow spaces before/after unary operators (words on by default, nonwords off by default)
-    "spaced-line-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
+    "spaced-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
     "wrap-regex": 0, // require regex literals to be wrapped in parentheses (off by default)
 
     //
