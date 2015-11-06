@@ -46,7 +46,7 @@ function isConfigured() {
  *
  * @param response {object} Successful response from HTTP Request.
  *
- * @return {object} An object with the keys: response, raw
+ * @return {object} An object with the keys: body, raw, status
  */
 function parseResponse(data) {
     console.log(data);
