@@ -1,7 +1,7 @@
 {
   "name": "penneo-js-sdk",
   "title": "Penneo - Javascript SDK",
-  "version": "0.0.10",
+  "version": "0.0.13",
   "description": "Penneo Javascript SDK",
   "author": "Jesús Otero <jo@penneo.com> - http://penneo.com",
   "main": "bin/main.js",
