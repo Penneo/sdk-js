@@ -49,11 +49,10 @@ function isConfigured() {
  * @return {object} An object with the keys: body, raw, status
  */
 function parseResponse(data) {
-    console.log(data);
     let response = {
         body: {},
         raw: data,
-        status: data.status
+        status: data.statusCode
     };
 
     if (!data.body) {
