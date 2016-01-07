@@ -12,5 +12,6 @@ export default {
     get: connector.get,
     post: connector.post,
     put: connector.put,
+    patch: connector.patch,
     delete: connector.delete
 };
