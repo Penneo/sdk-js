@@ -59,7 +59,12 @@ function parseResponse(data) {
         return response;
     }
 
-    response.body = JSON.parse(data.body);
+    if (typeof data.body === "string") {
+        response.body = JSON.parse(data.body);
+    } else {
+        response.body = data.body;
+    }
+
     return response;
 }
 
@@ -95,7 +100,10 @@ function buildRequestOptions(method, resource, data) {
             requestOptions.qs = data;
             break;
 
-        case 'POST': // Accept JSON and body on POST with Data.
+        case 'POST':
+        case 'PUT':
+        case 'PATCH':
+            // Accept JSON and body content on requests with Data.
             requestOptions.body = data;
             requestOptions.json = true;
             break;
@@ -169,6 +177,16 @@ function _put(resource, data) {
 
 /**
  * @param resource {string} Resource endpoint e.g. /casefiles/1, /casefiles/1/documents/1
+ * @param data     {object} Data to be used for updating the resource
+ *
+ * @return {Promise}
+ */
+function _patch(resource, data) {
+    return createRequest('PATCH', resource, data);
+}
+
+/**
+ * @param resource {string} Resource endpoint e.g. /casefiles/1, /casefiles/1/documents/1
  *
  * @return {Promise}
  */
@@ -181,5 +199,6 @@ export default {
     get: _get,
     post: _post,
     put: _put,
+    patch: _patch,
     delete: _delete
 };
