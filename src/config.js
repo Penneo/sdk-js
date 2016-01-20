@@ -14,6 +14,7 @@ let config = {
     key: null,
     secret: null,
     url: null,
+    token: null,
     update: update
 };
 
