@@ -1,8 +1,8 @@
 import config from './config';
 import connector from './connector';
 
-function init(key, secret, url) {
-    config.update({key: key, secret: secret, url: url});
+function init(options) {
+    config.update(options);
 }
 
 /* Exports */

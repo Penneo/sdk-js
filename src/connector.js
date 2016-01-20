@@ -12,12 +12,51 @@ import config from './config';
  * @param key    {string} API key
  * @param secret {string} secret  API secret
  *
- * @return {object}
+ * @return {object} headers with X-WSSE added
  */
-function generateAuthHeader(key, secret) {
-    let wsseOptions = {username: key, password: secret};
+function generateWsseAuthHeader(headers) {
+    let wsseOptions = {username: config.key, password: config.secret};
     let token = wsse(wsseOptions);
-    return token.getWSSEHeader({nonceBase64: true});
+
+    headers['X-WSSE'] = token.getWSSEHeader({nonceBase64: true});
+
+    return headers;
+}
+
+/**
+ * Appends X-Auth-Token to Headers
+ *
+ * @private
+ *
+ * @param headers {object} Request Headers
+ *
+ * @return {object} headers with X-Auth-Token added
+ */
+function generateTokenAuthHeader(headers) {
+    headers['X-Auth-Token'] = config.token;
+
+    return headers;
+}
+
+/**
+ * Generates the Authentication Headers based on type of authentication
+ *
+ * @private
+ *
+ * @param headers {object} Request Headers
+ *
+ * @return {object} headers with Auth Tokens added
+ */
+function generateAuthHeaders(headers) {
+    if (config.token) {
+        return generateTokenAuthHeader(headers);
+    }
+
+    if (config.key && config.secret) {
+        return generateWsseAuthHeader(headers);
+    }
+
+    return headers;
 }
 
 /**
@@ -26,15 +65,11 @@ function generateAuthHeader(key, secret) {
  * @return {bool}
  */
 function isConfigured() {
-    for (let key in config) {
-        if (!config.hasOwnProperty(key)) {
-            continue;
-        }
-        if (!config[key]) {
-            return false;
-        }
+    if (config.url) {
+        return true;
     }
-    return true;
+
+    return false;
 }
 
 
@@ -85,11 +120,13 @@ function buildRequestOptions(method, resource, data) {
         uri: config.url + resource,
         withCredentials: false, // @todo: why do we need to set this?
         headers: {
-            'X-WSSE': generateAuthHeader(config.key, config.secret),
             'Accept-charset': 'utf-8',
             Accept: 'application/json'
         }
     };
+
+    // Update Request Headers with Authentication Headers
+    requestOptions.headers = generateAuthHeaders(requestOptions.headers);
 
     if (!data) {
         return requestOptions;
