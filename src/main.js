@@ -7,10 +7,18 @@ class RequestHandler {
         this._token = settings.token;
     }
 
+    setToken(token) {
+        this._token = token;
+    }
+
     getAuthHeaders() {
-        let headers = {
-            'X-Auth-Token': this._token
-        };
+        let headers = {};
+
+        if (this._token) {
+            headers['X-Auth-Token'] = this._token;
+        }
+
+        headers['X-Requested-With'] = "XHttpRequest";
 
         let mergedHeaders = assign({}, headers, this.headers);
         return mergedHeaders;
@@ -58,7 +66,7 @@ class RequestHandler {
      */
     post(resource, data) {
         let request = {
-            method: 'GET',
+            method: 'POST',
             url: resource,
             data: data
         };
@@ -74,7 +82,7 @@ class RequestHandler {
      */
     put(resource, data) {
         let request = {
-            method: 'GET',
+            method: 'PUT',
             url: resource,
             data: data
         };
@@ -90,7 +98,7 @@ class RequestHandler {
      */
     patch(resource, data) {
         let request = {
-            method: 'GET',
+            method: 'PATCH',
             url: resource,
             data: data
         };
