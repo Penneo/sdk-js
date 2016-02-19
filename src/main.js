@@ -5,6 +5,7 @@ class RequestHandler {
     constructor(settings) {
         this._baseURL = settings.url;
         this._token = settings.token;
+        this._auth = settings.auth; // [JWT : JSON Web Token / Session ID]
     }
 
     setToken(token) {
@@ -16,6 +17,10 @@ class RequestHandler {
 
         if (this._token) {
             headers['X-Auth-Token'] = this._token;
+        }
+
+        if (this._auth) {
+            headers.Authorization = this._auth;
         }
 
         headers['X-Requested-With'] = "XHttpRequest";
