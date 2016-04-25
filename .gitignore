@@ -25,3 +25,4 @@ sassdoc
 # Logs
 *.log
 *~
+_tests
