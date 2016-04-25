@@ -8,6 +8,10 @@ class RequestHandler {
         this._auth = settings.auth; // [JWT : JSON Web Token / Session ID]
     }
 
+    getToken() {
+        return this._token;
+    }
+
     setToken(token) {
         this._token = token;
     }
