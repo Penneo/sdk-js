@@ -126,7 +126,7 @@ class RequestHandler {
             url: resource
         };
 
-        return createRequest(request);
+        return this._createRequest(request);
     }
 }
 
