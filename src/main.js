@@ -128,6 +128,26 @@ class RequestHandler {
 
         return this._createRequest(request);
     }
+
+    file(resource, data, method = 'POST') {
+        let formData = new FormData();
+
+        for (let key in data) {
+            if (!data.hasOwnProperty(key)) {
+                break;
+            }
+
+            formData.append(key, data[key], data[key].name);
+        }
+
+        let request = {
+            method: method,
+            url: resource,
+            data: formData
+        };
+
+        return this._createRequest(request);
+    }
 }
 
 export default RequestHandler;
