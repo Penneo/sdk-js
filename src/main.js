@@ -129,6 +129,20 @@ class RequestHandler {
         return this._createRequest(request);
     }
 
+    /**
+     * @param resource {string} Resource endpoint e.g. /casefiles/1, /casefiles/1/documents/1
+     *
+     * @return {Promise}
+     */
+    link(resource) {
+        let request = {
+            method: 'LINK',
+            url: resource
+        };
+
+        return this._createRequest(request);
+    }
+
     file(resource, data, method = 'POST') {
         let formData = new FormData();
 
